@@ -15,14 +15,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Quran Diaries"
+        android:text="@string/welcome_to_quran_diaries"
         android:id="@+id/textView"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Note"
+        android:text="@string/add_note"
         android:id="@+id/button"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
@@ -35,11 +35,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Display Notes"
+        android:text="@string/display_notes"
         android:id="@+id/button2"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/button"
         android:layout_alignStart="@+id/button"
         android:onClick="ListNotes"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/q1_2"
+        android:layout_below="@+id/button2"
+        android:contentDescription="All the praises be to God, the Lord of the Worlds" />
 
 </RelativeLayout>
