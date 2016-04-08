@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/surah_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/ayah_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/created_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/diary_note"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dip"
+        android:paddingTop="6dip"
+        android:textSize="22sp"
+        android:text="Large Text"
+        android:textStyle="bold" />
+
+</LinearLayout>

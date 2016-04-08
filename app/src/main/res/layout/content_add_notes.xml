@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="world.islam.qurandiaries.AddNotes"
+    tools:showIn="@layout/activity_add_notes">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Surah #:"
+        android:id="@+id/lblSurah"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Aya #:"
+        android:id="@+id/lblAya"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/txtSurahNumber"
+        android:layout_alignLeft="@+id/lblSurah"
+        android:layout_alignStart="@+id/lblSurah" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Note:"
+        android:id="@+id/lblDiaryNote"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/txtAyaNumber"
+        android:layout_alignLeft="@+id/lblAya"
+        android:layout_alignStart="@+id/lblAya" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Journal"
+        android:id="@+id/btnAdd"
+        android:layout_marginBottom="94dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/txtAyaNumber"
+        android:layout_alignEnd="@+id/txtAyaNumber"
+        android:onClick="PreviewNote"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/txtSurahNumber"
+        android:layout_alignBaseline="@+id/lblSurah"
+        android:layout_alignBottom="@+id/lblSurah"
+        android:layout_toRightOf="@+id/lblSurah"
+        android:layout_toEndOf="@+id/lblSurah"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/txtAyaNumber"
+        android:layout_alignBaseline="@+id/lblAya"
+        android:layout_alignBottom="@+id/lblAya"
+        android:layout_alignLeft="@+id/txtSurahNumber"
+        android:layout_alignStart="@+id/txtSurahNumber" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/txtDiaryNote"
+        android:layout_alignBaseline="@+id/lblDiaryNote"
+        android:layout_alignBottom="@+id/lblDiaryNote"
+        android:layout_alignLeft="@+id/txtAyaNumber"
+        android:layout_alignStart="@+id/txtAyaNumber" />
+
+</RelativeLayout>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Quran Diaries</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_list_notes">List Diary Entries</string>
+    <string name="title_activity_add_notes">Add Diary Note</string>
+</resources>
