@@ -48,6 +48,6 @@
         android:id="@+id/imageView"
         android:src="@drawable/q1_2"
         android:layout_below="@+id/button2"
-        android:contentDescription="All the praises be to God, the Lord of the Worlds" />
+        android:contentDescription="@string/all_the_praises_be_to_god_the_lord_of_the_worlds" />
 
 </RelativeLayout>
