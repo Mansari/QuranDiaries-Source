@@ -24,13 +24,12 @@
         android:layout_height="wrap_content"
         android:text="@string/add_note"
         android:id="@+id/button"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:onClick="AddNotes"
         android:layout_above="@+id/button2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="31dp"
-        android:onClick="AddNotes"/>
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,5 +48,15 @@
         android:src="@drawable/q1_2"
         android:layout_below="@+id/button2"
         android:contentDescription="@string/all_the_praises_be_to_god_the_lord_of_the_worlds" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Backup"
+        android:id="@+id/btnBackup"
+        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:onClick="Backup"/>
 
 </RelativeLayout>

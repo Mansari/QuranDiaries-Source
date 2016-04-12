@@ -3,20 +3,27 @@ package world.islam.qurandiaries;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.List;
 
 public class AddNotes extends AppCompatActivity {
     EditText SurahNumber;
     EditText AyahNumber;
     EditText DiaryNote;
+    Spinner spinnerSurahs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +32,44 @@ public class AddNotes extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        spinnerSurahs = (Spinner) this.findViewById(R.id.spinnerSurahName);
+        AyahNumber = (EditText) this.findViewById(R.id.txtAyaNumber);
+        DiaryNote = (EditText) this.findViewById(R.id.txtDiaryNote);
+
+        loadSpinnerData();
+
+    }
+
+    private void loadSpinnerData() {
+        // database handler
+        QuranDBRepo db = new QuranDBRepo(getApplicationContext());
+
+        // Spinner Drop down elements
+        List<Surah> surahList = db.getAllSurah();
+        // Creating adapter for spinner
+        ArrayAdapter<Surah> dataAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, surahList);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinnerSurahs.setAdapter(dataAdapter);
     }
 
 
-    public void PreviewNote(View view) {
-        SurahNumber = (EditText)this.findViewById(R.id.txtSurahNumber);
-        AyahNumber = (EditText)this.findViewById(R.id.txtAyaNumber);
-        DiaryNote = (EditText)this.findViewById(R.id.txtDiaryNote);
+    public void AddNote(View view) {
 
         QuranDBRepo repo = new QuranDBRepo(this);
         QuranJournalEntry note = new QuranJournalEntry();
-        note.surah_Number = Integer.parseInt(SurahNumber.getText().toString());
+        note.surah_Number = ((Surah) spinnerSurahs.getSelectedItem ()).surah_Number;
         note.ayah_Number = Integer.parseInt(AyahNumber.getText().toString());
         note.content = DiaryNote.getText().toString();
-        Integer _Student_Id = repo.insert(note);
-        Toast.makeText(this,"New entry inserted!",Toast.LENGTH_SHORT).show();
+        Integer _Entry_Id = repo.insert(note);
+        Toast.makeText(this, "New entry inserted!", Toast.LENGTH_SHORT).show();
 
         new AlertDialog.Builder(this)
                 .setTitle("Entry Details")
-                .setMessage("This is what you have entered:\r\nSurah #:" + SurahNumber.getText() + " - Ayah #: " + AyahNumber.getText() + "\r\nDiary Note: " + DiaryNote.getText() )
+                .setMessage("This is what you have entered:\r\nSurah #:" + note.surah_Number + " - Ayah #: " + note.ayah_Number  + "\r\nDiary Note: " + note.content )
                 //Add the Surah #, Aya #, and Note
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -52,5 +78,37 @@ public class AddNotes extends AppCompatActivity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
+
+        //reset form
+        spinnerSurahs.setSelection(0);
+        AyahNumber.setText("");
+        DiaryNote.setText("");
+    }
+
+    public void ReturnToMenu(View view)
+    {
+        if (AyahNumber.getText().toString().matches("") && DiaryNote.getText().toString().matches("")) {
+            finish();
+        }
+        else
+        {
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirm")
+                    .setMessage("Are you sure you want to return? You have unsaved content.")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }
+                    )
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing, stay on form //todo there must be another way to do this without doing a listener perhaps
+                        }
+                    }
+                    )
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
     }
 }

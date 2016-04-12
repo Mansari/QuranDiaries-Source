@@ -53,5 +53,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent1);
     }
 
+    public void Backup(View view)
+    {
+        Intent intent1=new Intent(this,Backup.class);
+        startActivity(intent1);
+    }
+
+
+
+
 
 }

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.BoolRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class Backup extends AppCompatActivity {
 
     DropboxAPI<AndroidAuthSession> mApi;
 
-    private boolean mLoggedIn;
+    private boolean mLoggedIn = false;
 
     ///////////////////////////////////////////////////////////////////////////
     //                      Your app-specific settings.                      //
@@ -81,11 +82,8 @@ public class Backup extends AppCompatActivity {
         textViewLastBackup = (TextView) findViewById(R.id.textViewDropBoxLastBackup);
 
         checkAppKeySetup();
-        if (mApi.getSession() !=  null)
-        {
-            mLoggedIn = true;
-        }
-        setLoggedInText();
+        Boolean isLinked = mApi.getSession().isLinked();
+        setLoggedIn(isLinked);
 
     }
 
@@ -119,13 +117,8 @@ public class Backup extends AppCompatActivity {
      */
     private void setLoggedIn(boolean loggedIn) {
         mLoggedIn = loggedIn;
-        setLoggedInText();
-    }
-
-    private void setLoggedInText()
-    {
         if (mLoggedIn) {
-            textViewDropBoxStatus.setText("Linked");
+            textViewDropBoxStatus.setText("Linked"); //todo add email
             btnDropBoxAuthenticate.setText("Unlink");
             btnDropBoxBackup.setEnabled(true);
         } else {
@@ -139,7 +132,7 @@ public class Backup extends AppCompatActivity {
         // Check to make sure that we have a valid app key
         if (APP_KEY.startsWith("CHANGE") ||
                 APP_SECRET.startsWith("CHANGE")) {
-            showToast("You must apply for an app key and secret from developers.dropbox.com, and add them to the DBRoulette ap before trying it.");
+            showToast("You must apply for an app key and secret from developers.dropbox.com, and add them to your ap before trying it.");
             finish();
             return;
         }

@@ -18,9 +18,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Surah #:"
         android:id="@+id/lblSurah"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="55dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -31,8 +31,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Aya #:"
         android:id="@+id/lblAya"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/txtSurahNumber"
+        android:layout_alignBaseline="@+id/txtAyaNumber"
+        android:layout_alignBottom="@+id/txtAyaNumber"
         android:layout_alignLeft="@+id/lblSurah"
         android:layout_alignStart="@+id/lblSurah" />
 
@@ -42,34 +42,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Note:"
         android:id="@+id/lblDiaryNote"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="17dp"
         android:layout_below="@+id/txtAyaNumber"
         android:layout_alignLeft="@+id/lblAya"
         android:layout_alignStart="@+id/lblAya" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add to Journal"
-        android:id="@+id/btnAdd"
-        android:layout_marginBottom="94dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txtAyaNumber"
-        android:layout_alignEnd="@+id/txtAyaNumber"
-        android:onClick="PreviewNote"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/txtSurahNumber"
-        android:layout_alignBaseline="@+id/lblSurah"
-        android:layout_alignBottom="@+id/lblSurah"
-        android:layout_toRightOf="@+id/lblSurah"
-        android:layout_toEndOf="@+id/lblSurah"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -77,10 +53,10 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/txtAyaNumber"
-        android:layout_alignBaseline="@+id/lblAya"
-        android:layout_alignBottom="@+id/lblAya"
-        android:layout_alignLeft="@+id/txtSurahNumber"
-        android:layout_alignStart="@+id/txtSurahNumber" />
+        android:layout_below="@+id/spinnerSurahName"
+        android:layout_alignLeft="@+id/spinnerSurahName"
+        android:layout_alignStart="@+id/spinnerSurahName"
+        android:layout_marginTop="13dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -92,5 +68,36 @@
         android:layout_alignBottom="@+id/lblDiaryNote"
         android:layout_alignLeft="@+id/txtAyaNumber"
         android:layout_alignStart="@+id/txtAyaNumber" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerSurahName"
+        android:spinnerMode="dropdown"
+        android:layout_alignTop="@+id/lblSurah"
+        android:layout_toRightOf="@+id/lblSurah"
+        android:layout_toEndOf="@+id/lblSurah" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Journal"
+        android:id="@+id/btnAdd"
+        android:onClick="AddNote"
+        android:layout_marginTop="88dp"
+        android:layout_below="@+id/txtDiaryNote"
+        android:layout_alignRight="@+id/txtDiaryNote"
+        android:layout_alignEnd="@+id/txtDiaryNote" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return to Menu"
+        android:id="@+id/btnReturn"
+        android:onClick="ReturnToMenu"
+        android:layout_below="@+id/btnAdd"
+        android:layout_alignLeft="@+id/btnAdd"
+        android:layout_alignStart="@+id/btnAdd"
+        android:layout_marginTop="24dp" />
 
 </RelativeLayout>

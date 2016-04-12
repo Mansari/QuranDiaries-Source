@@ -20,7 +20,7 @@ public class QuranJournalEntry {
     public Date lastupdatedDate;
 
     /* Inner class that defines the table contents */
-    public static  class QuranJouranlEntry implements BaseColumns {
+    public static  class QuranJournalEntryInternal implements BaseColumns {
         public static final String TABLE_NAME = "entry";
         public static final String COLUMN_NAME_SURAH_NUMBER = "sura_number";
         public static final String COLUMN_NAME_AYAH_NUMBER = "ayah_number";
