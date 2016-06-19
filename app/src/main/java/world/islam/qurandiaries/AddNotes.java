@@ -82,7 +82,7 @@ public class AddNotes extends AppCompatActivity {
         //reset form
         //No need to reset Surah - if you are continously adding ayat then it is fine ...spinnerSurahs.setSelection(0);
         //Increment Ayah Number by one (or leave as-is?)
-        AyahNumber.setText(note.ayah_Number+1);
+        //AyahNumber.setText((note.ayah_Number)+1);
         DiaryNote.setText("");
     }
 
